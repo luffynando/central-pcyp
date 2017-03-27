@@ -13,6 +13,7 @@ public class Telefono extends Thread{
 //dyo: Descolgado y ocupado
 //dye: Descolgado y en espera
 	private int numMarcar;
+	private Boolean bandera;
 	
 	public Telefono(int id, Central c)
 	{
@@ -20,7 +21,11 @@ public class Telefono extends Thread{
 		this.c=c;
 		estado=cye;
 		numMarcar=id;
-		
+		bandera=true;
+	}
+	
+	public void detenerHilo(){
+		bandera=false;
 	}
 	
 	public void setNumMarcar(int num)
@@ -93,7 +98,7 @@ public class Telefono extends Thread{
 	
 	public void run()
 	{
-		while(true)
+		while(bandera==true)
 		{
 			comunicaCentral();
 			

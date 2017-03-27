@@ -4,11 +4,17 @@ public class Persona extends Thread{
 
 	Telefono tel;
 	static final int  descolgar=1,marcar=2,colgar=3;
+	Boolean bandera;
 	
 	
 	public Persona(Telefono tel)
 	{
 		this.tel=tel;
+		bandera=true;
+	}
+	
+	public void detenerHilo(){
+		bandera=false;
 	}
 	
 	public void descolgar()
@@ -33,7 +39,7 @@ public class Persona extends Thread{
 	{
 		int aux=0;
 		
-		while(true)
+		while(bandera==true)
 		{   
 			aux=(int)(Math.random()*3+1);		
 			switch(aux){
