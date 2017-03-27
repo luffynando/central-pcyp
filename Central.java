@@ -18,15 +18,17 @@ public class Central {
 	//el telefono receptor revisa quien le está llamando y retorna quien lo está llamando
 	public synchronized int llamadaEntrante(int receptor)
 	{ 
+			int aux= receptor;
 			for(int i=0;i<10;i++)
-			{ if(marcar[i]==receptor)
-				{this.estableciendoComunicacion(i,receptor);
-				
-				  return(i);
-				}
+			{ 
+				if(marcar[i]==receptor)
+					{
+					//this.estableciendoComunicacion(i,receptor);
+				    aux= i;
+					}
 				
 			}
-			return(receptor);
+			return aux;
 	}
 	
 	public synchronized void hayTono()
@@ -46,8 +48,9 @@ public class Central {
 	
 	public synchronized void estaOcupado(int numMarcar, int id)
 	{    //está ocupado
-		if(this.id[numMarcar]!=Telefono.cye)
-		{	System.out.println("el telefono: "+numMarcar+ " está ocupado");
+		if(this.id[numMarcar]!= Telefono.cye)
+		{	
+			System.out.println("el telefono: "+numMarcar+ " esta ocupado");
 		    this.id[id]=Telefono.dyd;
 		    this.marcar[id]=id;
 		}
@@ -66,8 +69,6 @@ public class Central {
 		} catch (InterruptedException e) {}
 		id[emisor]=Telefono.dyd;
 		id[receptor]=Telefono.dyd;
-		
-		
 		
 	}
 	
