@@ -19,8 +19,8 @@ public class Persona extends Thread{
 	
 	public void marcar(int numero)
 	{   
-		tel.cambiaEstado(marcar);
 		tel.setNumMarcar(numero);
+		tel.cambiaEstado(marcar);
 	}
 	
 	public void colgar()
@@ -35,7 +35,7 @@ public class Persona extends Thread{
 		
 		while(true)
 		{   
-			aux=(int)(Math.random()*3)+1;		
+			aux=(int)(Math.random()*3+1);		
 			switch(aux){
 			case 1: 
 				this.descolgar(); 
@@ -44,7 +44,6 @@ public class Persona extends Thread{
 				}catch(Exception e){}
 				break;
 			case 2:
-				
 				this.marcar((int)(Math.random()*9)); 
 				try{
 				Thread.sleep(1000);
